@@ -68,21 +68,11 @@ body {
     position: absolute;
     left: 12.5%;
     top:5%;
-    /* background-color: white; */
+    background-color: white;
     opacity: 0.25;
 }
 
-.masonry div {
-  height: 150px;
-  line-height: 150px;
-  margin: 0 1rem 1rem 0;
-  text-align: center;
-  font-family: system-ui;
-  font-weight: 900;
-  font-size: 2rem;
-
-  background: #5a4343;
-  color: white;
-  opacity: 0.25;
-  z-index: inherit;
+.masonry-block {
+  position: absolute;
+  background-color:rgb(0, 0, 0);
 }
