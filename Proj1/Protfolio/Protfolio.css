@@ -1,0 +1,88 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+  margin: 0;
+}
+.container-fluid {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 0;
+}
+/* ============= Animation background ========= */
+.background {
+  background: linear-gradient(132deg, #fc00ff, #00dbde);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0px;
+  z-index: inherit;
+}
+.geoObj {
+  position: absolute;
+  top: 80vh;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px #fff;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: geoObj 10s ease-in forwards infinite;
+  z-index: inherit;
+}
+
+/* Animate Background*/
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes geoObj {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+/* MASONRY */
+
+.masonry-container{
+    width: 75%;
+    height:90%;
+    z-index: 3;
+    position: absolute;
+    left: 12.5%;
+    top:5%;
+    /* background-color: white; */
+    opacity: 0.25;
+}
+
+.masonry div {
+  height: 150px;
+  line-height: 150px;
+  margin: 0 1rem 1rem 0;
+  text-align: center;
+  font-family: system-ui;
+  font-weight: 900;
+  font-size: 2rem;
+
+  background: #5a4343;
+  color: white;
+  opacity: 0.25;
+  z-index: inherit;
+}
