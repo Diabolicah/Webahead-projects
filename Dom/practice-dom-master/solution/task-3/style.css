@@ -1,0 +1,14 @@
+* {
+    font-family: cursive;
+}
+
+body {
+    background-color: wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+li {
+    font-size: 25px;
+}

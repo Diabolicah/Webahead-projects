@@ -26,6 +26,8 @@ class Block {
     this.defaultLeft = element.offsetLeft;
     this.defaultTop = element.offsetTop;
     this.animationSpeed = 2;
+    this.sizeTimer = null;
+    this.slideTimer = null;
   }
 
   get isOpen() {
@@ -36,10 +38,12 @@ class Block {
   }
 
   closeBlock() {
-    let timer = null;
+    clearInterval(this.sizeTimer);
+    personalInfoDiv.children[1].style.opacity = 0;
+    this.element.children[2].style["z-index"] = 1;
+
     let tempSizeX = this.element.offsetWidth,
       tempSizeY = this.element.offsetHeight;
-    clearInterval(timer);
     let scaleSpeedX =
       tempSizeX - this.defaultWidth > tempSizeY - this.defaultHeight
         ? (tempSizeX - this.defaultWidth) / (tempSizeY - this.defaultHeight)
@@ -52,9 +56,12 @@ class Block {
       (scaleSpeedX / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
     scaleSpeedY =
       (scaleSpeedY / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
-    timer = setInterval(() => {
-      if (tempSizeX <= this.defaultWidth && tempSizeY <= this.defaultHeight)
-        clearInterval(timer);
+      this.sizeTimer = setInterval(() => {
+      if (tempSizeX <= this.defaultWidth && tempSizeY <= this.defaultHeight){
+        clearInterval(this.sizeTimer);
+        this.element.style.width = (this.element.offsetWidth/this.element.parentElement.offsetWidth) * 100 + "%"
+        this.element.style.height = (this.element.offsetHeight/this.element.parentElement.offsetHeight) * 100 + "%"
+      }
       else {
         if (tempSizeX > this.defaultWidth) {
           tempSizeX -= scaleSpeedX;
@@ -69,10 +76,11 @@ class Block {
   }
 
   openBlock(X, Y = 1) {
-    let timer = null;
+    clearInterval(this.sizeTimer);
+    this.element.children[1].style.opacity = 1;
+    this.element.children[2].style["z-index"] = -2;
     let tempSizeX = this.element.offsetWidth,
       tempSizeY = this.element.offsetHeight;
-    clearInterval(timer);
     let scaleSpeedX =
       X - tempSizeX > Y - tempSizeY ? (X - tempSizeX) / (Y - tempSizeY) : 1;
     let scaleSpeedY =
@@ -81,9 +89,12 @@ class Block {
       (scaleSpeedX / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
     scaleSpeedY =
       (scaleSpeedY / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
-    timer = setInterval(() => {
-      if (tempSizeX >= Math.floor(X) && tempSizeY >= Math.floor(Y))
-        clearInterval(timer);
+      this.sizeTimer = setInterval(() => {
+      if (tempSizeX >= Math.floor(X) && tempSizeY >= Math.floor(Y)){
+        clearInterval(this.sizeTimer);
+        this.element.style.width = (this.element.offsetWidth/this.element.parentElement.offsetWidth) * 100 + "%"
+        this.element.style.height = (this.element.offsetHeight/this.element.parentElement.offsetHeight) * 100 + "%"
+      }
       else {
         if (tempSizeX < X) {
           tempSizeX += scaleSpeedX;
@@ -97,11 +108,10 @@ class Block {
     }, 5);
   }
 
-  slideBlock(X, Y) {
-    let timer = null;
+  slideBlock(X, Y = 0) {
+    clearInterval(this.slideTimer);
     let tempPosX = this.element.offsetLeft,
       tempPosY = this.element.offsetTop;
-    clearInterval(timer);
     let scaleSpeedX =
       X - tempPosX > Y - tempPosY ? (X - tempPosX) / (Y - tempPosY) : 1;
     let scaleSpeedY =
@@ -110,9 +120,13 @@ class Block {
       (scaleSpeedX / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
     scaleSpeedY =
       (scaleSpeedY / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
-    timer = setInterval(() => {
-      if (tempPosX >= Math.floor(X) && tempPosY >= Math.floor(Y))
-        clearInterval(timer);
+      this.slideTimer = setInterval(() => {
+      if (tempPosX >= Math.floor(X) && tempPosY >= Math.floor(Y)){
+        clearInterval(this.slideTimer);
+        console.log()
+        this.element.style.left = (this.element.offsetLeft/this.element.parentElement.offsetWidth) * 100 + "%"
+        this.element.style.top = (this.element.offsetTop/this.element.parentElement.offsetHeight) * 100 + "%"
+      }
       else {
         if (tempPosX < X) {
           tempPosX += scaleSpeedX;
@@ -127,10 +141,9 @@ class Block {
   }
 
   slideBlockHome() {
-    let timer = null;
+    clearInterval(this.slideTimer);
     let tempPosX = this.element.offsetLeft,
       tempPosY = this.element.offsetTop;
-    clearInterval(timer);
     let scaleSpeedX =
       tempPosX - this.defaultLeft > tempPosY - this.defaultTop
         ? (tempPosX - this.defaultLeft) / (tempPosY - this.defaultTop)
@@ -143,9 +156,12 @@ class Block {
       (scaleSpeedX / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
     scaleSpeedY =
       (scaleSpeedY / Math.max(scaleSpeedX, scaleSpeedY)) * this.animationSpeed;
-    timer = setInterval(() => {
-      if (tempPosX <= this.defaultLeft && tempPosY <= this.defaultTop)
-        clearInterval(timer);
+      this.slideTimer = setInterval(() => {
+      if (tempPosX <= this.defaultLeft && tempPosY <= this.defaultTop){
+        clearInterval(this.slideTimer);
+        this.element.style.left = (this.element.offsetLeft/this.element.parentElement.offsetWidth) * 100 + "%"
+        this.element.style.top = (this.element.offsetTop/this.element.parentElement.offsetHeight) * 100 + "%"
+      }
       else {
         if (tempPosX > this.defaultLeft) {
           tempPosX -= scaleSpeedX;
@@ -158,25 +174,40 @@ class Block {
       }
     }, 5);
   }
+
+  interruptActions(){
+    clearInterval(this.sizeTimer);
+    this.closeBlock();
+    clearInterval(this.slideTimer);
+    this.slideBlockHome()
+  }
+
+  interruptSize(){
+    clearInterval(this.sizeTimer);
+    this.closeBlock();
+  }
+
+  interruptSlide(){
+    clearInterval(this.slideTimer);
+    this.slideBlockHome();
+  }
 }
 
 let masonryStorage = document.getElementById("masonryStorage");
-let tempDiv = document.createElement("div");
-tempDiv.style.width = "20px";
-tempDiv.style.height = "20px";
-tempDiv.className = "masonry-block";
-masonryStorage.appendChild(tempDiv);
+let personalInfoDiv = document.getElementsByClassName("masonry-block")[0];
 
-let tempDivBlock = new Block(tempDiv);
-tempDivBlock.openBlock(masonryStorage.clientWidth / 3,masonryStorage.clientHeight / 2);
-async function test() {
-  await sleep(5000);
-  tempDivBlock.closeBlock();
-  tempDivBlock.slideBlock(tempDiv.clientLeft + masonryStorage.clientWidth / 3, tempDiv.clientLeft + 150);
-  await sleep(5000)
-  tempDivBlock.slideBlockHome()
+let personalInfoBlock = new Block(personalInfoDiv);
+
+personalInfoDiv.onmouseover = ()=>{
+
+  personalInfoBlock.openBlock(personalInfoDiv.offsetWidth*2, personalInfoDiv.offsetHeight*2)
 }
-test();
-console.log(tempDiv, tempDivBlock);
+
+personalInfoDiv.onmouseout = ()=>{
+  personalInfoBlock.closeBlock()
+
+}
+
+
 
 moveGeoObj();
