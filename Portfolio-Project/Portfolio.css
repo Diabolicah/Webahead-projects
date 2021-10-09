@@ -25,6 +25,21 @@ body {
   margin: 0px;
   z-index: inherit;
 }
+
+.bubble-container {
+  background-color: #045de9;
+  background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0px;
+  z-index: 5;
+}
+
 .geoObj {
   position: absolute;
   top: 80vh;
@@ -37,6 +52,26 @@ body {
   animation: geoObj 10s ease-in forwards infinite;
   z-index: inherit;
 }
+
+.loading-bubble{
+  position: absolute;
+  bottom: -100px;
+  Background: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: loading-bubble-animation 4s linear infinite;
+}
+.loading-bubble::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.25) translate(-70%, -70%);
+  background: radial-gradient(#fff, transparent);
+  border-radius: 50%;
+}
+
 
 /* Animate Background*/
 @keyframes Gradient {
@@ -57,6 +92,23 @@ body {
   }
   to {
     transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+@keyframes loading-bubble-animation
+{
+  0%
+  {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  99%
+  {
+    opacity: 1;
+  }
+  100%
+  {
+    transform: translateY(-3600%);
     opacity: 0;
   }
 }
@@ -126,6 +178,7 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   padding-bottom: 15%;
+  opacity: 1;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -136,20 +189,15 @@ body {
 .card {
   color: inherit;
   cursor: pointer;
-  width: calc(33% - 2rem);
-  min-width: calc(33% - 2rem);
-  height: 400px;
-  min-height: 400px;
+  width: calc(33% - 6rem);
+  min-width: calc(33% - 6rem);
+  height: 350px;
+  min-height: 350px;
   perspective: 1000px;
-  margin: 1rem;
+  margin: 1.5rem;
   position: relative;
 }
 @media screen and (max-width: 800px) {
-  .card {
-    width: calc(50% - 2rem);
-  }
-}
-@media screen and (max-width: 500px) {
   .card {
     width: 100%;
   }
@@ -158,7 +206,7 @@ body {
 .front,
 .back {
   display: flex;
-  border-radius: 6px;
+  border-radius: 10%;
   background-position: center;
   background-size: cover;
   text-align: center;
@@ -171,6 +219,7 @@ body {
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transition: ease-in-out 600ms;
+  box-shadow: 3px 3px 5px 3px rgb(124, 123, 123); 
 }
 
 .front {
