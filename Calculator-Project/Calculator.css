@@ -1,0 +1,162 @@
+body {
+    font-family: "Josefin Sans", sans-serif;
+    margin: 0;
+    overflow: hidden;
+  }
+  .container-fluid {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 0;
+  }
+  /* ============= Animation background ========= */
+  .background {
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    background-size: 400% 400%;
+    animation: Gradient 15s ease infinite;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0px;
+    z-index: inherit;
+  }
+  
+  .geoObj {
+    position: absolute;
+    top: 80vh;
+    left: 45vw;
+    width: 10px;
+    height: 10px;
+    border: solid 1px #fff;
+    transform-origin: top left;
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    animation: geoObj 10s ease-in forwards infinite;
+    z-index: inherit;
+  }
+  
+  /* Animate Background*/
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes geoObj {
+    from {
+      transform: scale(0) rotate(0deg) translate(-50%, -50%);
+      opacity: 1;
+    }
+    to {
+      transform: scale(20) rotate(960deg) translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+
+.calculatorWindow {
+    position: absolute;
+    left: 25%;
+    top: 12.5%;
+    width: 50vw;
+    height: 75vh;
+}
+
+.resultsWindow {
+    Width: 95%;
+    height: 30%;
+    margin: 1% auto;
+    border: 8px solid;
+    border-radius: 20px;
+    border-color: rgba(255, 255, 255, 0.89);
+}
+
+.equationWindow {
+    Width: 100%;
+    height: 20%;
+    border-bottom: 4px solid;
+    border-color: rgba(255, 255, 255, 0.89);
+    display:flex;
+    align-items: flex-end;
+    font-size: 3.5vh;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.equationWindow::-webkit-scrollbar {
+    display: none;
+}
+
+.outputWindow {
+    Width: 100%;
+    height: calc(80% - 8px);
+    border-top: 4px solid;
+    border-color: rgba(255, 255, 255, 0.89);
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 3.5vh;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.outputWindow::-webkit-scrollbar {
+    display: none;
+}
+
+.buttonsWindow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 68%
+}
+
+.calculatorButton {
+    flex: 1 1 auto;
+    flex-basis: 21%;
+    margin: 0.5%;
+    border-radius: 20px;
+    border: 0px solid;
+    background-color: rgba(27, 25, 25, 0.89);
+    color: white;
+    font-size: 25px;
+    font-style: bold;
+    box-shadow: 5px 5px 15px rgba(27,25,25,0.89);
+}
+
+.calculatorButton:hover {
+    background-color: rgba(27, 25, 25, 1);
+}
+
+.calculatorButton:nth-of-type(4n){
+    background-color:rgb(231, 165, 79);
+}
+
+.calculatorButton:nth-of-type(4n):hover {
+    background-color:rgb(231, 155, 55);
+}
+
+.calculatorButton:last-child {
+    background-color:rgb(231, 165, 79);
+}
+
+.calculatorButton:last-child:hover {
+    background-color:rgb(231, 155, 55);
+}
+
+.zeroButton {
+    flex-grow: 10;
+}
+
