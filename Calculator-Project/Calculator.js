@@ -27,6 +27,7 @@ let operatorsList = ["*", "/", "-", "+"];
 let expressionWin = document.querySelector(".expressionWindow");
 let outputWin = document.querySelector(".outputWindow");
 let needOperator = false;
+let buttonsList = Array.from(document.querySelectorAll("button"));
 
 let rstButton = document.querySelector(".resetButton");
 let delButton = document.querySelector(".deleteButton");
@@ -87,5 +88,12 @@ operatorButtons.forEach((value) => {
       outputWin.textContent = evaluation || outputWin.textContent;
       needOperator = false;
     }
+  });
+});
+
+document.addEventListener("keypress", (key) => {
+  console.log(key);
+  buttonsList.forEach((button) => {
+    if (button.textContent == key.key) button.click();
   });
 });
