@@ -86,8 +86,11 @@ body {
   border-color: rgba(255, 255, 255, 0.89);
   display: flex;
   align-items: flex-end;
+  justify-content: flex-start;
   font-size: 3.5vh;
+  white-space: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
