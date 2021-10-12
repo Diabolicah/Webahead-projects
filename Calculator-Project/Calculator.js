@@ -92,7 +92,6 @@ operatorButtons.forEach((value) => {
 });
 
 document.addEventListener("keypress", (key) => {
-  console.log(key);
   buttonsList.forEach((button) => {
     if (button.textContent == key.key) button.click();
   });
