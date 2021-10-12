@@ -75,6 +75,7 @@ operatorButtons.forEach((value) => {
       return;
     }
     if (event.target.classList.contains("negative")) {
+      if (needOperator) return;
       if (outputWin.textContent[0] == "-") outputWin.textContent = outputWin.textContent.substring(1);
       else outputWin.textContent = "-" + outputWin.textContent;
       return;
@@ -84,6 +85,7 @@ operatorButtons.forEach((value) => {
       let evaluation = eval(expressionWin.textContent);
       expressionWin.textContent = "";
       outputWin.textContent = evaluation || outputWin.textContent;
+      needOperator = false;
     }
   });
 });
