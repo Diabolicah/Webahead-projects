@@ -53,17 +53,17 @@ body {
   z-index: inherit;
 }
 
-.loading-bubble{
+.loading-bubble {
   position: absolute;
   bottom: -100px;
-  Background: transparent;
+  background: transparent;
   border-radius: 50%;
   pointer-events: none;
   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
   animation: loading-bubble-animation 4s linear infinite;
 }
-.loading-bubble::before{
-  content: '';
+.loading-bubble::before {
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -71,7 +71,6 @@ body {
   background: radial-gradient(#fff, transparent);
   border-radius: 50%;
 }
-
 
 /* Animate Background*/
 @keyframes Gradient {
@@ -95,43 +94,39 @@ body {
     opacity: 0;
   }
 }
-@keyframes loading-bubble-animation
-{
-  0%
-  {
+@keyframes loading-bubble-animation {
+  0% {
     transform: translateY(0%);
     opacity: 1;
   }
-  99%
-  {
+  99% {
     opacity: 1;
   }
-  100%
-  {
+  100% {
     transform: translateY(-3600%);
     opacity: 0;
   }
 }
 
 /* ============ Waves ========== */
-.footer{
-  position:absolute;
+.footer {
+  position: absolute;
   bottom: 0;
   width: 100%;
 }
 
 .waves {
-  position:relative;
+  position: relative;
   width: 100%;
-  height:15vh;
-  margin-bottom:-7px; /*Fix for safari gap*/
-  max-height:150px;
+  height: 15vh;
+  margin-bottom: -7px; /*Fix for safari gap*/
+  max-height: 150px;
 }
 
 /* Animation */
 
 .parallax > use {
-  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 .parallax > use:nth-child(1) {
   animation-delay: -2s;
@@ -151,15 +146,17 @@ body {
 }
 @keyframes move-forever {
   0% {
-    transform: translate3d(-90px,0,0);
+    transform: translate3d(-90px, 0, 0);
   }
-  100% { 
-    transform: translate3d(85px,0,0);
+  100% {
+    transform: translate3d(85px, 0, 0);
   }
 }
 
 /* ============= Cards =============== */
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -174,9 +171,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  overflow:auto;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
   padding-bottom: 15%;
   opacity: 1;
 }
@@ -197,7 +194,12 @@ body {
   margin: 1.5rem;
   position: relative;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1300px) {
+  .card {
+    width: calc(40%);
+  }
+}
+@media screen and (max-width: 825px) {
   .card {
     width: 100%;
   }
@@ -219,7 +221,7 @@ body {
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transition: ease-in-out 600ms;
-  box-shadow: 3px 3px 5px 3px rgb(124, 123, 123); 
+  box-shadow: 4px 4px 10px rgb(124, 123, 123);
 }
 
 .front {
