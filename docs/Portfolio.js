@@ -65,12 +65,14 @@ document.getElementById("geoObjStorage").addEventListener("click", closeBigCard)
 exitIcon.addEventListener("click", closeBigCard);
 
 async function openBigCard() {
+  if(isBigCardOpen) return;
   isBigCardOpen = true;
   Array.from(this.children).forEach((child) => {
     let tempClone = child.cloneNode(true);
-    Array.from(tempClone.children).forEach((child) => {console.log(child) 
-      child.style.fontSize="2.25vh"})
-    tempClone.style.fontSize = "2.25vh";
+    Array.from(tempClone.children).forEach((child) => {
+      
+      child.style.fontSize=document.documentElement.clientHeight>document.documentElement.clientWidth?"2.25vh":"2.25vw"})
+    tempClone.style.fontSize = document.documentElement.clientHeight>document.documentElement.clientWidth?"2.25vh":"2.25vw";
     bigCard.appendChild(tempClone);
   });
   bigCard.style["z-index"] = "1";
