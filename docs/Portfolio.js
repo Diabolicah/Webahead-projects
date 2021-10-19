@@ -68,7 +68,9 @@ async function openBigCard() {
   isBigCardOpen = true;
   Array.from(this.children).forEach((child) => {
     let tempClone = child.cloneNode(true);
-    tempClone.style.fontSize = "2.25vw";
+    Array.from(tempClone.children).forEach((child) => {console.log(child) 
+      child.style.fontSize="2.25vh"})
+    tempClone.style.fontSize = "2.25vh";
     bigCard.appendChild(tempClone);
   });
   bigCard.style["z-index"] = "1";
