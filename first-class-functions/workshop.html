@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First-class Functions</title>
+  </head>
+  <body>
+    <h1>Open the console</h1>
+    <script>
+      // const returnsOne = () => 1;
+      // const logger = (log) => console.log(typeof log);
+      // logger(returnsOne);
+      // logger(returnsOne());
+      // const eventFunc = (event) => console.log(event.clientX, event.clientY);
+      // window.addEventListener("click", eventFunc);
+      // const one = (callback) => callback(1);
+      // one(console.log);
+
+      // const asyncDouble = (num, callback) => setTimeout(callback, 1000, num * 2);
+      // asyncDouble(10, console.log);
+      const light = (str, callback) =>
+        setTimeout(() => {
+          console.log(str);
+          if (callback) callback();
+        }, 1000);
+      light("green", () =>
+        light("amber", () =>
+          light("red", () => {
+            light("red");
+            light("amber", () => light("green", () => light("finished")));
+          })
+        )
+      );
+    </script>
+  </body>
+</html>
