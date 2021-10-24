@@ -38,6 +38,7 @@ let operatorButtons = Array.from(document.querySelectorAll(".operator"));
 rstButton.addEventListener("click", () => {
   expressionWin.textContent = "";
   outputWin.textContent = "0";
+  needOperator = false;
 });
 
 delButton.addEventListener("click", (event) => {
