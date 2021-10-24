@@ -19,19 +19,30 @@
 
       // const asyncDouble = (num, callback) => setTimeout(callback, 1000, num * 2);
       // asyncDouble(10, console.log);
-      const light = (str, callback) =>
+      // const light = (str, callback) =>
+      //   setTimeout(() => {
+      //     console.log(str);
+      //     if (callback) callback();
+      //   }, 1000);
+      // light("green", () =>
+      //   light("amber", () =>
+      //     light("red", () => {
+      //       light("red");
+      //       light("amber", () => light("green", () => light("finished")));
+      //     })
+      //   )
+      // );
+      const light = (str, ...args) => {
         setTimeout(() => {
-          console.log(str);
-          if (callback) callback();
+          if (str) console.log(str);
+          let tempIndex = 0;
+          while (typeof args[tempIndex] == "string") console.log(args[tempIndex++]);
+          if (args.length > tempIndex + 1) {
+            args[tempIndex](args[tempIndex + 1], ...args.slice(tempIndex + 2));
+          }
         }, 1000);
-      light("green", () =>
-        light("amber", () =>
-          light("red", () => {
-            light("red");
-            light("amber", () => light("green", () => light("finished")));
-          })
-        )
-      );
+      };
+      light("green", light, "amber", light, "red", light, "red", "amber", light, "green", light, "finished");
     </script>
   </body>
 </html>
