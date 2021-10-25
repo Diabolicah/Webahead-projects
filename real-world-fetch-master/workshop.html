@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real world fetch</title>
+  </head>
+  <body>
+    <form id="Name">
+      <label for="fname">First name:</label><br />
+      <input type="text" id="fname" name="fname" /><br />
+      <label for="lname">Last name:</label><br />
+      <input type="text" id="lname" name="lname" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <h1>Pokemon Search</h1>
+    <form id="PokeSearch">
+      <label for="search">Pokemon Name:</label><br />
+      <input type="text" id="search" name="search" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <h2 id="PokemonName"></h2>
+    <img src="" id="PokemonImage" />
+    <script>
+      document.querySelector("#Name").addEventListener("submit", (event) => {
+        event.preventDefault();
+        let fd = new FormData(event.target);
+        let dataObj = {};
+        for (var element of fd.entries()) {
+          dataObj[element[0]] = element[1];
+        }
+        fetch("https://echo.oliverjam.workers.dev/json", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(dataObj),
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json();
+          })
+          .then(console.log)
+          .catch(console.error);
+      });
+
+      document.querySelector("#PokeSearch").addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (event.target.elements.search.value == "") {
+          document.querySelector("#PokemonName").innerHTML = "";
+          return;
+        }
+        fetch(`https://pokeapi.co/api/v2/pokemon/${event.target.elements.search.value.toLowerCase()}`, {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json();
+          })
+          .then((val) => {
+            document.querySelector("#PokemonName").innerHTML = val.name;
+            document.querySelector("#PokemonImage").src = val.sprites.front_default;
+          })
+          .catch(() => {
+            document.querySelector(
+              "#PokemonName"
+            ).innerHTML = `⚠️ Couldn't find "${event.target.elements.search.value}"`;
+          });
+      });
+    </script>
+  </body>
+</html>
