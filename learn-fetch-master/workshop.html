@@ -9,11 +9,11 @@
     <h1>Open the console</h1>
     <script>
       const getUser = (usr) =>
-        fetch(`https://api.github.com/users/${usr}`, { headers: { Authorization: `Bearer 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` } }).then((user) =>
+        fetch(`https://api.github.com/users/${usr}`).then((user) =>
           user.json()
         );
       const getRepos = (usr) =>
-        fetch(usr.repos_url, { headers: { Authorization: `Bearer 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` } }).then((user) => user.json());
+        fetch(usr.repos_url).then((user) => user.json());
       getUser("diabolicah")
         .then(getRepos)
         .then(console.log)
