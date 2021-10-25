@@ -1,0 +1,188 @@
+/* You can edit any code below this line. You do not need to
+remove any of the existing style declarations that apply fonts
+and colour. You may wish to target additional HTML
+elements from index.html. */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-feature-settings: "tnum";
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+h1 {
+  color: hsl(220, 10%, 10%);
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 15px 34%;
+  font-weight: bold;
+}
+
+.card {
+  color: hsl(220, 10%, 20%);
+  margin: auto 33%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid lightgray;
+}
+
+.card__text {
+  width: 100%;
+}
+
+.card__media img {
+  border-radius: 5px;
+}
+
+.card__header {
+  padding-bottom: 1rem;
+}
+
+.card__title {
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+.card__date {
+  font-size: 0.875rem;
+}
+
+.card__preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__tip {
+  font-weight: 500;
+  font-size: 0.875rem;
+  width: 50%;
+  margin: 50%, 25%;
+}
+
+.card__button {
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  font-size: 0.875rem;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  box-shadow: 0 2px 0 hsl(220, 10%, 90%);
+  text-decoration: none;
+
+  /* position: absolute; */
+  width: 10%;
+  padding: 5px 10px;
+  margin: 10%, auto;
+  text-align: center;
+}
+
+.card__button:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+/* STRETCH GOAL: Media query to create a two 
+column layout on screens wider than 800px */
+@media only screen and (min-width: 800px) {
+  /* write your style declarations here */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+      "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-feature-settings: "tnum";
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  h1 {
+    color: hsl(220, 10%, 10%);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 15px 34%;
+    font-weight: bold;
+  }
+
+  .card {
+    color: hsl(220, 10%, 20%);
+    margin: auto 12.5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 3px solid lightgray;
+  }
+
+  .card__text {
+    width: 25%;
+    height: 100%;
+  }
+
+  .card__media {
+    width: 75%;
+  }
+
+  .card__media img {
+    border-radius: 5px;
+  }
+
+  .card__header {
+    padding-bottom: 1rem;
+  }
+
+  .card__title {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+
+  .card__date {
+    font-size: 0.875rem;
+  }
+
+  .card__preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .card__tip {
+    font-weight: 500;
+    font-size: 0.875rem;
+    width: 50%;
+    margin: 50%, 25%;
+  }
+
+  .card__button {
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    font-size: 0.875rem;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #1890ff;
+    border-color: #1890ff;
+    box-shadow: 0 2px 0 hsl(220, 10%, 90%);
+    text-decoration: none;
+
+    /* position: absolute; */
+    text-align: center;
+    width: 33%;
+    padding: 5px 10px;
+    margin: 10%, auto;
+  }
+}
