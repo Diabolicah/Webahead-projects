@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/node-file-server-master/workshop/practice.js"
+            "program": "${workspaceFolder}/learn-express-middleware-main/workshop/server.js",
         }
     ]
 }
